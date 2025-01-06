@@ -1,0 +1,118 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    color: #444444;
+    font-size: 2.5em;
+    background: linear-gradient(to right, #4CAF50, #8BC34A);
+    -webkit-background-clip: text; /* For Safari */
+    -moz-background-clip: text; /* For Firefox */
+    background-clip: text; /* Standard property */
+    -webkit-text-fill-color: transparent; /* For Safari */
+    -moz-text-fill-color: transparent; /* For Firefox */
+    text-fill-color: transparent; /* Standard property */
+}
+
+.content {
+    line-height: 1.8;
+    color: #555555;
+}
+
+.content h2 {
+    color: #ffffff;
+    background-color: #4CAF50;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.intro, .mission, .team, .vision, .contact {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #4CAF50;
+    border-radius: 5px;
+}
+
+.intro {
+    background-color: #FFEB3B;
+}
+
+.mission {
+    background-color: #FFCDD2;
+}
+
+.team {
+    background-color: #C5CAE9;
+}
+
+.vision {
+    background-color: #C8E6C9;
+}
+
+.contact {
+    background-color: #FFE0B2;
+}
+
+.team ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team li {
+    background: #eeeeee;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.team li strong {
+    color: #222222;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #dddddd;
+    background-color: #f1f1f1;
+    border-radius: 0 0 8px 8px;
+    padding: 10px;
+}
+
+footer p {
+    margin: 0;
+    color: #888888;
+}

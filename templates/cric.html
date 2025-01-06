@@ -1,0 +1,75 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Match Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url("{% static 'image/cricc.jpg' %}");
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select,
+        button {
+            padding: 8px;
+            border-radius: 4px;
+            width: 200px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cricket Match Ticket Booking</h1>
+    <form method="post" action="{% url 'home:cricket_booking_confirmation' %}">
+        {% csrf_token %}
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="ticket_type">Ticket Type:</label>
+            <select name="ticket_type" id="ticket_type" required>
+                <option value="General">General</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+            </select>
+        </div>
+        <div>
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" min="1" required>
+        </div>
+        <button type="submit">Book Tickets</button>
+    </form>
+</body>
+</html>

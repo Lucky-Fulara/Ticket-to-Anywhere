@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Ticket Booking</title>
+    <link rel="stylesheet" href="{% static 'feedback.css' %}">
+    <style>
+        
+        nav {
+            background-color: #34495e;
+            padding: 10px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0 15px;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{% url 'home:wwe' %}">Home</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>Feedback</h1>
+        </header>
+        <section class="content">
+            <div class="feedback-form">
+                <h2>We value your feedback</h2>
+                <p>Please fill out the form below to share your thoughts and suggestions.</p>
+                <form action="/submit-feedback/" method="post">
+                    {% csrf_token %}
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2024 Ticket Booking. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

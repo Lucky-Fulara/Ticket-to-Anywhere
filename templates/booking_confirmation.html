@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'image/conf.png' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        a, button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        a:hover, button:hover {
+            background-color: #45a049;
+        }
+        button {
+            background-color: #008CBA;
+        }
+        button:hover {
+            background-color: #007BB5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking Confirmation</h1>
+    <p id="confirmationMessage">{{ confirmation_message }}</p>
+    <p><strong>Passenger Name:</strong> {{ passenger_name }}</p>
+    <p><strong>Age:</strong> {{ age }}</p>
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>Class Type:</strong> {{ class_type }}</p>
+    <p><strong>Seat Type:</strong> {{ seat_type }}</p>
+    <p><strong>Ticket Number:</strong> {{ ticket_number }}</p>
+    <p><strong>Seat Number:</strong> {{ seat_number }}</p>
+    <button onclick="generatePDF()">Download PDF</button>
+    <a href="{% url 'home:upload_info' %}">Book Another Ticket</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+        // Function to generate PDF
+        function generatePDF() {
+            // Get passenger details
+            var confirmationMessage = document.getElementById("confirmationMessage").innerText;
+            var passengerName = '{{ passenger_name }}';
+            var age = '{{ age }}';
+            var gender = '{{ gender }}';
+            var classType = '{{ class_type }}';
+            var seatType = '{{ seat_type }}';
+            var ticketNumber = '{{ ticket_number }}';
+            var seatNumber = '{{ seat_number }}';
+
+            // Create a new jsPDF instance
+            const { jsPDF } = window.jspdf;
+            var doc = new jsPDF();
+
+            // Add text to the PDF
+            doc.text("Booking Confirmation", 20, 20);
+            doc.text(confirmationMessage, 20, 30);
+            doc.text("Passenger Name: " + passengerName, 20, 40);
+            doc.text("Age: " + age, 20, 50);
+            doc.text("Gender: " + gender, 20, 60);
+            doc.text("Class Type: " + classType, 20, 70);
+            doc.text("Seat Type: " + seatType, 20, 80);
+            doc.text("Ticket Number: " + ticketNumber, 20, 90);
+            doc.text("Seat Number: " + seatNumber, 20, 100);
+
+            // Save the PDF
+            doc.save("booking_confirmation.pdf");
+        }
+
+        // Optionally, you can call generatePDF() automatically when the page loads
+        // window.onload = function() {
+        //     generatePDF();
+        // };
+    </script>
+</body>
+</html>

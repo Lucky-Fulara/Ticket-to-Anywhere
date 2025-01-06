@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking</title>
+    <style>
+        nav {
+            background-color: #acb7cb;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .nav-list a {
+            color: rgb(80, 145, 103);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content {
+            text-align: center;
+            color: black;
+            z-index: 1;
+            margin-top: 50px; /* Adjusted to avoid overlap with the navbar */
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px; /* Increased padding */
+            border-radius: 10px;
+            font-size: 18px; /* Increased font size */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{% url 'home:wwe' %}">Home</a></li>
+        </ul>
+    </nav>
+
+    <video autoplay loop muted id="video-background">
+        <source src="{% static 'video/businside.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+        <h1 style="color:black;">Bus Booking</h1>
+        <form action="{% url 'home:search_buses' %}" method="POST" class="form-container">
+            {% csrf_token %}
+            <label for="departure">Departure:</label>
+            <input type="text" id="departure" name="departure" placeholder="Enter Departure City" required><br><br>
+
+            <label for="arrival">Arrival:</label>
+            <input type="text" id="arrival" name="arrival" placeholder="Enter Arrival City" required><br><br>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <button type="submit">Search Buses</button>
+        </form>
+    </div>
+</body>
+</html>

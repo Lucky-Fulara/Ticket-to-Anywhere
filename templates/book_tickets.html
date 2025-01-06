@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'book.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url("{% static 'image/tree.jpg' %}");
+        }
+        nav {
+            background-color: #acb7cb;
+            padding: 10px;
+        }
+        
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+        
+        .nav-list a {
+            color: rgb(80, 145, 103);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        form {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            background-color: #000000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{% url 'home:wwe' %}">Home</a></li>
+        </ul>
+    </nav>
+    <h1>Book Tickets for Train {{ train_number }}</h1>
+    <form action="{% url 'home:booking_confirmation' %}" method="post">
+        {% csrf_token %}
+        <label for="passenger_name">Passenger Name:</label>
+        <input type="text" id="passenger_name" name="passenger_name" required><br>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br>
+        
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br>
+        
+        <label for="seat_type">Type of Seat:</label>
+        <select id="seat_type" name="seat_type" required>
+            <option value="General">General</option>
+            <option value="Sleeper">Sleeper</option>
+            <option value="AC">AC</option>
+        </select><br>
+        
+        <input type="hidden" name="train_number" value="{{ train_number }}">
+        <input type="hidden" name="class_type" value="{{ class_type }}">
+        
+        <button type="submit">Confirm Booking</button>
+    </form>
+</body>
+</html>

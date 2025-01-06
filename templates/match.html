@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cricket Match Ticket Booking</title>
+    <link rel="stylesheet" href="{% static 'match.css' %}">
+    <script src="{% static 'scripts.js' %}"></script>
+    </head>
+<body>
+    <header class="hero">
+        <video class="video-bg" autoplay muted loop>
+            <source src="{% static 'video/cric.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1>Welcome to Cricket Match Ticket Booking</h1>
+            <p>Book your tickets for the latest cricket matches!</p>
+            <input type="date" class="custom-date" id="custom-date" style="display: none; width: 97%;">
+        </div>
+    </header>
+
+    <section class="matches">
+        <h2>Upcoming Matches</h2>
+        <div class="match-listing">
+            <div class="match">
+                <h3>USA vs CAN</h3>
+                <p>Date: JUN 2, 2024</p>
+                <p>Location: Grand Prairie <br> Stadium</p>
+                <a href="{% url 'home:cric' %}">
+                    <button class="book-now">Book Now</button>
+                </a>
+            </div>
+
+            <div class="match">
+                <h3>WI vs PNG</h3>
+                <p>Date: JUN 2, 2024</p>
+                <p>Location: Providence Stadium <br><br></p>
+                <a href="{% url 'home:cric' %}">
+                    <button class="book-now">Book Now</button>
+                </a>
+            </div>
+
+            <div class="match">
+                <h3>NAM vs OMAN</h3>
+                <p>Date: JUN 3, 2024</p>
+                <p>Location: Kensington Oval <br>Stadium</p>
+                <a href="{% url 'home:cric' %}">
+                    <button class="book-now">Book Now</button>
+                </a>
+            </div>
+
+            <div class="match">
+                <h3>SL vs RSA</h3>
+                <p>Date: JUN 3, 2024</p>
+                <p>Location: Nassau County <br>Stadium</p>
+                <a href="{% url 'home:cric' %}">
+                    <button class="book-now">Book Now</button>
+                </a>
+            </div>
+
+            <div class="match">
+                <h3>IND vs IRE</h3>
+                <p>Date: JUN 5, 2024</p>
+                <p>Location: Nassau County <br>Stadium<br></p>
+                <a href="{% url 'home:cric' %}">
+                    <button class="book-now">Book Now</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 2%;">
+        <p>&copy; 2024 Cricket Match Ticket Booking. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript function to toggle visibility of custom date input
+        function toggleCustomDate() {
+            const dateDropdown = document.getElementById('date-dropdown');
+            const customDateInput = document.getElementById('custom-date');
+            const selectedValue = dateDropdown.value;
+
+            if (selectedValue === 'custom') {
+                customDateInput.style.display = 'block'; // Show custom date input
+            } else {
+                customDateInput.style.display = 'none'; // Hide custom date input
+            }
+        }
+    </script>
+</body>
+</html>

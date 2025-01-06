@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #6c17ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #000046, #1cb5e0);
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.image-section {
+    flex: 1;
+    background: url('/static/image/imm.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.form-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-section form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section input[type="text"],
+.form-section input[type="email"],
+.form-section input[type="password"],
+.form-section input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-section input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.form-section .terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffa500;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-section button:hover {
+    background-color: #e69500;
+}
+
+.form-section p {
+    margin-top: 20px;
+    color: #666;
+}
+
+.form-section p a {
+    color: #ffa500;
+    text-decoration: none;
+}
+
+.form-section p a:hover {
+    text-decoration: underline;
+}

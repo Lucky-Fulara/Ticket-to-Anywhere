@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        nav {
+            width: 100%;
+            background-color: #acb7cb;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list a {
+            color: rgb(80, 145, 103);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+        .wrapper {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 1000px;
+            overflow: hidden;
+        }
+        .image-container {
+            flex: 1;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .content-container {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{% url 'home:wwe' %}">Home</a></li>
+        </ul>
+    </nav>
+    <div class="wrapper">
+        <div class="image-container">
+            <img src="{% static 'image/Bass.jpg' %}" alt="Bus">
+        </div>
+        <div class="content-container" id="content-to-pdf">
+            <h1>Booking Confirmation</h1>
+            <p>Thank you for booking Bus {{ bus_number }}.</p>
+            <p>Name: {{ name }}</p>
+            <p>Email: {{ email }}</p>
+            <p>Seat Quantity: {{ seat_quantity }}</p>
+            <p>Price per Seat: {{ price_per_seat }}-INR</p>
+            <p>Total Price: {{ total_price }}-INR</p>
+            <div class="button-container">
+                <button onclick="downloadPDF()">Download PDF</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+    <script>
+        function downloadPDF() {
+            var element = document.getElementById('content-to-pdf');
+            html2canvas(element).then(canvas => {
+                var imgData = canvas.toDataURL('image/png');
+                var pdf = new jsPDF('p', 'mm', 'a4');
+                var imgWidth = 210;
+                var pageHeight = 295;
+                var imgHeight = canvas.height * imgWidth / canvas.width;
+                var heightLeft = imgHeight;
+                var position = 0;
+
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save('booking_confirmation.pdf');
+            });
+        }
+    </script>
+</body>
+</html>

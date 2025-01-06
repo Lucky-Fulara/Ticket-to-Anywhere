@@ -1,0 +1,110 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Ticket Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url("{% static 'image/cri.jpg' %}");
+
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .ticket-details {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .ticket-details p {
+            margin: 5px 0;
+        }
+        .confirmation-message {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .download-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>Cricket Ticket Booking Confirmation</h1>
+    <div class="ticket-details">
+        <p><strong>Ticket ID:</strong> <span id="ticket_id"></span></p>
+        <p><strong>Name:</strong> <span id="name">{{ name }}</span></p>
+        <p><strong>Email:</strong> <span id="email">{{ email }}</span></p>
+        <p><strong>Ticket Type:</strong> <span id="ticket_type">{{ ticket_type }}</span></p>
+        <p><strong>Quantity:</strong> <span id="quantity">{{ quantity }}</span></p>
+    </div>
+    <div class="confirmation-message">
+        <p>Your cricket ticket booking has been confirmed!</p>
+        <p>Thank you for booking with us. Enjoy the match!</p>
+    </div>
+    <button class="download-button" onclick="downloadPDF()">Download Confirmation as PDF</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ticketID = generateTicketID();
+            document.getElementById('ticket_id').textContent = ticketID;
+        });
+
+        function generateTicketID() {
+            const date = new Date();
+            const components = [
+                date.getFullYear(),
+                ('0' + (date.getMonth() + 1)).slice(-2),
+                ('0' + date.getDate()).slice(-2),
+                ('0' + date.getHours()).slice(-2),
+                ('0' + date.getMinutes()).slice(-2),
+                ('0' + date.getSeconds()).slice(-2),
+                ('00' + date.getMilliseconds()).slice(-3)
+            ];
+            return 'TICKET-' + components.join('');
+        }
+
+        async function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const ticketID = document.getElementById('ticket_id').textContent;
+            const name = document.getElementById('name').textContent;
+            const email = document.getElementById('email').textContent;
+            const ticketType = document.getElementById('ticket_type').textContent;
+            const quantity = document.getElementById('quantity').textContent;
+
+            const confirmationText = `Cricket Ticket Booking Confirmation\n\n` +
+                `Ticket ID: ${ticketID}\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Ticket Type: ${ticketType}\n` +
+                `Quantity: ${quantity}\n\n` +
+                `Your cricket ticket booking has been confirmed!\n` +
+                `Thank you for booking with us. Enjoy the match!`;
+
+            doc.text(confirmationText, 10, 10);
+            doc.save('ticket_confirmation.pdf');
+        }
+    </script>
+</body>
+</html>

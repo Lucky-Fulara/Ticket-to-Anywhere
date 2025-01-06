@@ -1,0 +1,128 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Flights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            position: relative; /* Ensure body is positioned relatively */
+        }
+        .container {
+            position: relative; /* Ensure container is positioned relatively */
+            width: 100%;
+            max-width: 600px; /* Limit max width of the container */
+            margin: auto; /* Center the container */
+            z-index: 1; /* Ensure content is above the video */
+            background-color: rgba(255, 255, 255, 0.8); /* Add some transparency */
+            border-radius: 12px; /* Rounded corners for the box */
+            padding: 40px; /* Padding for the content */
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+        header {
+            position: absolute; /* Position the header absolutely */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Hide overflow */
+            z-index: 0; /* Ensure the video is behind the content */
+        }
+        header video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px; /* Add margin bottom to the heading */
+            text-align: center; /* Center align the heading */
+        }
+        form {
+            margin-top: 20px; /* Add margin top to the form */
+            text-align: center; /* Center align the form */
+        }
+        .form-group {
+            margin-bottom: 20px; /* Add margin bottom to the form group */
+        }
+        label {
+            display: block; /* Display labels as block elements */
+            font-weight: bold; /* Add bold font weight to labels */
+            margin-bottom: 8px; /* Add margin bottom to labels */
+        }
+        select, input[type="date"], button {
+            width: calc(100% - 16px); /* Calculate width */
+            padding: 12px; /* Add padding */
+            border-radius: 6px; /* Add border radius */
+            border: 1px solid #ccc; /* Add border */
+            font-size: 16px; /* Set font size */
+            margin-top: 6px; /* Add margin top */
+        }
+        button {
+            margin-top: 20px; /* Add margin top to button */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <video autoplay loop muted>
+            <source src="{% static 'video/pl.mp4' %}" type="video/mp4">
+        </video>
+    </header>
+    <div class="container">
+        <h1>Search Flights</h1>
+        <form method="post" action="{% url 'home:search_flights' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="departure">From:</label>
+                <select name="departure" id="departure">
+                    <option value="BLR" selected>Bangalore (BLR)</option>
+                    <option value="DEL">Delhi (DEL)</option>
+                    <option value="BOM">Mumbai (BOM)</option>
+                    <option value="MAA">Chennai (MAA)</option>
+                    <option value="HYD">Hyderabad (HYD)</option>
+                    <option value="CCU">Kolkata (CCU)</option>
+                    <option value="GOI">Goa (GOI)</option>
+                    <option value="AMD">Ahmedabad (AMD)</option>
+                    <option value="COK">Cochin (COK)</option>
+                    <option value="PNQ">Pune (PNQ)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="arrival">To:</label>
+                <select name="arrival" id="arrival">
+                    <option value="DEL">Delhi (DEL)</option>
+                    <option value="BLR" selected>Bangalore (BLR)</option>
+                    <option value="BOM">Mumbai (BOM)</option>
+                    <option value="MAA">Chennai (MAA)</option>
+                    <option value="HYD">Hyderabad (HYD)</option>
+                    <option value="CCU">Kolkata (CCU)</option>
+                    <option value="GOI">Goa (GOI)</option>
+                    <option value="AMD">Ahmedabad (AMD)</option>
+                    <option value="COK">Cochin (COK)</option>
+                    <option value="PNQ">Pune (PNQ)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date">
+            </div>
+            <button type="submit">Search Flights</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Ticket To Anywhere</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 10px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0 15px;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #2980b9;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .content {
+            padding: 0 20px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 14px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{% url 'home:wwe' %}">Home</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>About Us</h1>
+        </header>
+        <section class="content">
+            <p>Welcome to Ticket To Anywhere, your premier destination for hassle-free ticket booking. Whether it's events, shows, or travel, we're here to make your experience seamless and enjoyable.</p>
+            <h2>Our Mission</h2>
+            <p>At Ticket To Anywhere, our mission is to redefine the ticket booking experience. We're committed to providing a platform that is easy, efficient, and secure, offering a diverse range of events and destinations to suit every taste.</p>
+            <h2>Meet Our Team</h2>
+            <ul>
+                <li><strong>Lucky Fulara:</strong> CEO & Founder</li>
+                <li><strong>Harshita Rana:</strong> Chief Technology Officer</li>
+                <li><strong>Abhay Chand:</strong> Marketing Director</li>
+                <li><strong>Arpit Singh Negi:</strong> Customer Support Manager</li>
+                <!-- Add more team members as necessary -->
+            </ul>
+            <h2>Our Vision</h2>
+            <p>At Ticket To Anywhere, we envision a world where attending your favorite events is effortless and enjoyable for everyone. Our platform is dedicated to realizing this vision, providing a seamless ticket booking experience.</p>
+            <h2>Contact Us</h2>
+            <p>Got questions or feedback? Don't hesitate to reach out to us via email at <a href="mailto:luckyfulara728+T2A@gmail.com">luckyfulara728+T2A@gmail.com</a> or connect with us on <a href="https://www.instagram.com/lucky_fulara_23">Instagram</a>.</p>
+        </section>
+        <footer>
+            <p>&copy; 2024 Ticket To Anywhere. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: url('{% static "image/im.jpg" %}') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 64, 128, 0.8);
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        header img {
+            position: absolute;
+            left: 20px;
+            height: 50px;
+        }
+        .header-text {
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(51, 51, 51, 0.8);
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .hero h1 {
+            font-size: 48px;
+        }
+        .hero p {
+            font-size: 24px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            width: 300px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .card h2 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .card p {
+            padding: 0 20px;
+            font-size: 16px;
+        }
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-text">
+        <h1>Welcome to T2A</h1>
+        <p>Your one-stop solution for booking train, plane, bus tickets, and stadium events!</p>
+    </div>
+</header>
+
+<nav>
+    <a href="login">Login</a>
+    <a href="signup">Signup</a>
+</nav>
+
+<div class="hero">
+    <h1>Your Journey Begins Here</h1>
+    <p>Book tickets with ease and explore the world</p>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>Book Train Tickets</h2>
+        <p>"Ride the Rails to New Adventures!"</p>
+    </div>
+
+    <div class="card">
+        <h2>Book Plane Tickets</h2>
+        <p>"To most people, the sky is the limit. To those who love aviation, the sky is home."</p>
+    </div>
+
+    <div class="card">
+        <h2>Book Cricket Stadium Tickets</h2>
+        <p>"Cricket is a gentlemen’s game played by hooligans."</p>
+    </div>
+
+    <div class="card">
+        <h2>Book Bus Tickets</h2>
+        <p>"The road is there, it will always be there. You just have to decide when to take it."</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 T2A. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

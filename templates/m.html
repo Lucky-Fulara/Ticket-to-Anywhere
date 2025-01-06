@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css link-->
+    <link rel="stylesheet" href="{% static 'm.css' %}">
+    <!--boxicons link-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Ticket 2 Anywhere (T2A)</title>
+</head>
+
+
+<body style="background-color: #eeeaea">
+    <!----------------------------SIDEBAR----------------------------->
+<nav class="sidebar close" style="z-index: 1;">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'image/img.png' %}" alt="Example Image">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">Ticket 2 Anywhere</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+<!-----------------------------content of sidebar-------------------------->
+<div class="menu-bar">
+    <div class="menu">
+
+
+        <ul class="menu-links">
+  <!--for dashboard-->
+            <li class="nav-link">
+                <a href="#">
+                    <i class='bx bx-home-alt icon' ></i>
+                    <span class="text nav-text">Dashboard</span>
+                </a>
+            </li>
+<!--for offers-->
+            <li class="nav-link">
+                <a href="{% url 'home:offers' %}">
+                    <i class='bx bx-star icon' ></i>
+                    <span class="text nav-text">Offers</span>
+                </a>
+            </li>
+
+ <!--for about us-->
+            <li class="nav-link">
+                <a href="{% url 'home:about_us' %}">
+                    <i class='bx bxs-notepad icon' ></i>
+                    <span class="text nav-text">About Us</span>
+                </a>
+            </li>
+
+ <!--for help-->
+            <li class="nav-link">
+                <a href="{% url 'home:help' %}">
+                    <i class='bx bx-error-circle icon' ></i>
+                    <span class="text nav-text">Help</span>
+                </a>
+            </li>
+
+ <!--for feedback-->
+            <li class="nav-link">
+                <a href="{% url 'home:feedback' %}">
+                    <i class='bx bx-message-dots icon' ></i>
+                    <span class="text nav-text">Feedback</span>
+                </a>
+            </li>
+        </ul>
+
+</div>
+<div class="bottom-content">
+<!--for logout-->
+    <li class="">
+        <a href="{% url 'login' %}">
+            <i class='bx bx-log-out icon' ></i>
+            <span class="text nav-text">Log out</span>
+        </a>
+    </li>
+
+    </div>
+</nav>
+<!--including js for modes-->
+<script src="{% static 'script.js' %}"></script>
+
+    <!----------------------------------VIDEO---------------------------------------->
+    <div class="video-section" style="width: 100%;height:400px;">
+        <video autoplay loop muted class="video-section-video" style="height: 400px;">
+            <source src="{% static 'video/video1.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+
+    <!----------------------------------PANELS---------------------------------------->
+    <h2 class="panel-line">   Book your journey, experience, and entertainment!!</h2>
+    <br><br><br><br>        
+
+     <div class="panel" style="margin-left: 130px;">       
+        <div class="panel-content">
+            <a href="{% url 'home:search_buses' %}">
+                <div class="panel-box-img" style="position: relative; width: 200px; height: 200px; overflow: hidden; border-radius: 50%; margin: 0 auto;">
+                    <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="{% static 'video/bus.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </a>
+            <p style="margin-left: 40px;">Bus Ticket</p>
+        </div> 
+
+        <div class="panel-content">
+            <a href="{% url 'home:upload_info' %}">
+                <div class="panel-box-img" style="position: relative; width: 200px; height: 200px; overflow: hidden; border-radius: 50%; margin: 0 auto;">
+                    <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="{% static 'video/trainlogovideo.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </a>
+            <p style="margin-left: 30px;">Train Ticket</p>
+        </div>
+
+        <div class="panel-content">
+            <a href="{% url 'home:search_flights' %}">
+                <div class="panel-box-img" style="position: relative; width: 200px; height: 200px; overflow: hidden; border-radius: 50%; margin: 0 auto;">
+                    <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="{% static 'video/plane_logo.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </a>
+            <p style="margin-left: 30px;">Plane Ticket</p>
+        </div> 
+
+        <div class="panel-content">
+            <a href="{% url 'home:match' %}">
+                <div class="panel-box-img" style="position: relative; width: 200px; height: 200px; overflow: hidden; border-radius: 50%; margin: 0 auto;">
+                    <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="{% static 'video/circketlogo.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </a>
+            <p style="margin-left: 30px;">Cricket Ticket</p>
+        </div>
+    </div>
+        <footer style="width: 100%;">
+            <br><br><br><br><br><br><br><br>
+            <div class="foot-panel1">
+            </div>
+            <div class="foot-panel2">
+                <ul>
+                    <p>About T2A</p>
+                   <a>Agent Registration</a>
+                    <a>Careers</a>
+                    <a>Sitemap</a>
+                </ul>
+
+                <ul>
+                    <p>Legal</p>
+                    <a>Privacy Policy</a>
+                    <a>Terms and Cocditions</a>
+                    <a>Cookie Policy</a>
+        
+                </ul>
+
+                <ul>
+                    <p>Traveller Tools</p>
+                    <a>Booking</a>
+                    <a>Cancellation</a>
+                    <a>Offers</a>
+                </ul>
+
+                <ul>
+                    <p>Help</p>
+                    <a>Help Centre</a>
+                    <a>Privacy Settings</a>
+                    <a>Contact us: 123339722</a>
+                    <a>Email: abc@gmail.com</a>
+
+                </ul>
+            </div>
+        </footer>
+    
+</body>
+</html>

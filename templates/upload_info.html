@@ -1,0 +1,100 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Train Data</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'display.css' %}">
+    <style>
+        .hero video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+        /* Decrease text box size */
+        input[type="text"],
+        input[type="date"] {
+            width: 385px; /* Adjust the width as needed */
+            padding: 8px; /* Add padding to improve appearance */
+            margin-bottom: 10px; /* Add some space between the text boxes */
+            font-size: 16px; /* Set font size */
+        }
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #2c3e50;
+            padding: 10px;
+            position: fixed; /* Fixed position to stick to the top */
+            top: 0; /* Distance from the top of the viewport */
+            width: 100%; /* Full width */
+            z-index: 1000; /* Ensure it's above other content */
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+
+        body {
+            margin-top: 50px; /* Compensate for the fixed navigation bar */
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{% url 'home:wwe' %}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <video autoplay loop muted>
+            <source src="{% static 'video/trainvideo.mp4' %}" type="video/mp4">
+        </video>
+    </header>
+    <h1 style="color:white;">Search Your Train</h1>
+    <form method="post" >
+        {% csrf_token %}
+        <label for="from_station_code">From Station Code:</label>
+        <input type="text" id="from_station_code" name="from_station_code" required><br><br>
+        <label for="to_station_code">To Station Code:</label>
+        <input type="text" id="to_station_code" name="to_station_code" required><br><br>
+        <label for="date_of_journey">Date of Journey:</label>
+        <input type="date" id="date_of_journey" name="date_of_journey" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

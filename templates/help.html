@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Ticket Booking</title>
+    <style>
+        nav {
+            background-color: #acb7cb;
+            padding: 10px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .nav-list a {
+            color: rgb(80, 145, 103);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            color: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #d0e9ee;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #e9d8c7;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        header h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .content {
+            padding: 20px;
+        }
+        .faq, .support {
+            margin-bottom: 30px;
+        }
+        .faq h2, .support h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .faq ul, .support ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .faq li, .support li {
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .faq li strong {
+            color: #16a085;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="{% url 'home:wwe' %}">Home</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>Help</h1>
+        </header>
+        <section class="content">
+            <div class="faq">
+                <h2>Frequently Asked Questions</h2>
+                <ul>
+                    <li><strong>How do I book a ticket?</strong> You can book a ticket by navigating to the 'Book Now' section.</li>
+                    <li><strong>What payment methods are accepted?</strong> We accept all major credit cards and PayPal.</li>
+                    <li><strong>Can I cancel my booking?</strong> Yes, you can cancel your booking within 24 hours of purchase.</li>
+                </ul>
+            </div>
+            <div class="support">
+                <h2>Contact Support</h2>
+                <ul>
+                    <li>Email: <a href="mailto:luckyfulara728@+support@gmail.com">luckyfulara728@+support@gmail.com</a></li>
+                    <li>Phone: +919548695822</li>
+                    <li>Hours: Monday - Friday, 9:00 AM - 6:00 PM (EST)</li>
+                </ul>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2024 Ticket Booking. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

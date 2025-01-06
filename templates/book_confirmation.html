@@ -1,0 +1,89 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url("{% static 'image/pla.jpg' %}");
+        }
+        .confirmation {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .download-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1 style="color:white;">Booking Confirmation</h1>
+    <div class="confirmation">
+        <p>Name: <span id="name">{{ name }}</span></p>
+        <p>Age: <span id="age">{{ age }}</span></p>
+        <p>Flight <span id="flight_number">{{ flight_number }}</span> booked successfully in <span id="selected_class">{{ selected_class }}</span>, seat <span id="selected_seat">{{ selected_seat }}</span>!</p>
+    </div>
+    <button class="download-button" onclick="downloadPDF()">Download Confirmation as PDF</button>
+
+    <script>
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const name = document.getElementById('name').textContent;
+            const age = document.getElementById('age').textContent;
+            const flightNumber = document.getElementById('flight_number').textContent;
+            const selectedClass = document.getElementById('selected_class').textContent;
+            const selectedSeat = document.getElementById('selected_seat').textContent;
+
+            const confirmationText = `Name: ${name}\n` +
+                `Age: ${age}\n` +
+                `Flight Number: ${flightNumber}\n` +
+                `Class: ${selectedClass}\n` +
+                `Seat: ${selectedSeat}\n\n` +
+                `Flight booked successfully!`;
+
+            // Add a title with larger font size
+            doc.setFontSize(20);
+            doc.text('Booking Confirmation', 10, 20);
+
+            // Add a border
+            doc.setLineWidth(0.5);
+            doc.rect(5, 5, 200, 287); // Rectangle border around the entire page
+
+            // Add some space and then the main content with a smaller font size
+            doc.setFontSize(12);
+            doc.text(confirmationText, 10, 50);
+
+            // Add some style to headers
+            doc.setFontSize(16);
+            doc.setTextColor(0, 102, 204); // Blue color for headers
+            doc.text('Flight Details:', 10, 45);
+
+            // Reset font size and color for main content
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+
+            // Save the PDF
+            doc.save('booking_confirmation.pdf');
+        }
+    </script>
+</body>
+</html>

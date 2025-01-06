@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'upload.css' %}">
+</head>
+<body>
+    <h1>Train Data</h1>
+    {% if trains %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Train Number</th>
+                    <th>Train Name</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Duration</th>
+                    <th>From Station</th>
+                    <th>To Station</th>
+                    <th>Class Types</th>
+                    <th>Seat Availability</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for train in trains %}
+                    <tr>
+                        <td>{{ train.train_number }}</td>
+                        <td>{{ train.train_name }}</td>
+                        <td>{{ train.from_sta }}</td>
+                        <td>{{ train.to_sta }}</td>
+                        <td>{{ train.duration }}</td>
+                        <td>{{ train.from_station_name }}</td>
+                        <td>{{ train.to_station_name }}</td>
+                        <td>{{ train.class_type|join:", " }}</td>
+                        <td>
+                            {% if train.availability %}
+                                {% for seat in train.availability %}
+                                    {{ seat.class_name }}: {{ seat.current_status }}<br>
+                                {% endfor %}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if train.availability %}
+                                {% for seat in train.availability %}
+                                    {% if "AVAILABLE" in seat.current_status %}
+                                        <form action="{% url 'home:book_tickets' %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="train_number" value="{{ train.train_number }}">
+                                            <input type="hidden" name="class_type" value="{{ seat.class_name }}">
+                                            <button type="submit">Book Now</button>
+                                        </form>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                No seats available
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No train data available.</p>
+    {% endif %}
+</body>
+</html>
